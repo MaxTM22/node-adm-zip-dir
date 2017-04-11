@@ -1,3 +1,10 @@
-Made in service of zipping and unzipping the `webhook-generate` repo. Which needs to get zipped and uploaded, to be pulled down on `wh create`, which unzips it.
+Unzip a directory or zip a directory.
 
-`adm-zip` is the same library that `wh create` uses. Unfortunately, the `zip` application in OS X can not be uncompressed by `adm-zip`. When trying, we get an `INVALID_FORMAT` error.
+```
+To zip:    zip-dir <directoryToZip> <zipFileToSaveTo>
+           zip-dir <directoryToZip>
+To unzip:  zip-dir <zipFileToExtract> <directoryToExtractTo>
+           zip-dir <zipFileToExtract
+```
+
+Built using [`adm-zip`](https://github.com/cthackers/adm-zip).
