@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+
+var argv = require( 'minimist' )( process.argv.slice( 2 ) )
+
+var help = [
+	'Unzip a directory or zip a directory.\n\n',
+	'To zip:    zip-dir <directoryToZip> <zipFileToSaveTo>\n',
+	'           zip-dir <directoryToZip>\n',
+	'To unzip:  zip-dir <zipFileToExtract> <directoryToExtractTo>\n',
+	'           zip-dir <zipFileToExtract>\n'
+].join('')
+
+var unzipDir = require( '../index.js' ).UnzipDir;
+var zipDir   = require( '../index.js' ).ZipDir;
+
+if ( argv._.length === 0 ) return console.log( help )
+if ( argv._.length > 2 )   return console.log( help )
+if ( argv._.length === 1 ) {
+	if ( isZipFileName( argv._[0] ) ) {
+		var zipFile = argv._[0];
+		var selfNamedDirectory = zipFile.slice( 0, -4 )
+	
+		unzipDir( zipFile, selfNamedDirectory )
+	}
+	else {
+		var directoryToZip = argv._[0];
+		var selfNamedZipFile = directoryToZip + '.zip';
+	
+		zipDir( directoryToZip, selfNamedZipFile )
+	}
+}
+else if ( argv._.length === 2 ) {
+	if ( isZipFileName( argv._[0] ) && !isZipFileName( argv._[1] ) ) {
+		var zipFile = argv._[0];
+		var directoryToExtractTo = argv._[1]
+
+		unzipDir( zipFile, directoryToExtractTo )
+	}
+	else if ( !isZipFileName( argv._[0] ) && isZipFileName( argv._[1] ) ) {
+		var directoryToZip = argv._[0];
+		var zipFileToSaveTo = argv._[1];
+
+		zipDir( directoryToZip, zipFileToSaveTo )
+	}
+	else return console.log( help );
+}
+
+function isZipFileName ( fileName ) {
+	return fileName.slice( -4 ) === '.zip';
+}
