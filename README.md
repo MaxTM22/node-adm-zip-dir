@@ -1,5 +1,6 @@
 Unzip a directory or zip a directory.
 
+
 ```
 To zip:    zip-dir <directoryToZip> <zipFileToSaveTo>
            zip-dir <directoryToZip>

@@ -7,7 +7,7 @@ var help = [
 	'To zip:    zip-dir <directoryToZip> <zipFileToSaveTo>\n',
 	'           zip-dir <directoryToZip>\n',
 	'To unzip:  zip-dir <zipFileToExtract> <directoryToExtractTo>\n',
-	'           zip-dir <zipFileToExtract>\n'
+	'           zip-dir <zipFileToExtract>\n',
 ].join('')
 
 var unzipDir = require( '../index.js' ).UnzipDir;
