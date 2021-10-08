@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "adm-zip": "^0.4.7",
+    "adm-zip": "^0.5.6",
     "findit": "^2.0.0",
     "minimist": "^1.2.0"
   }
